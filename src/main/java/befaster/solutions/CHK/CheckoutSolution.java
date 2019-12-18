@@ -1,7 +1,6 @@
 package befaster.solutions.CHK;
 
 import befaster.runner.SolutionNotImplementedException;
-import jdk.internal.jline.internal.Preconditions;
 
 public class CheckoutSolution {
 
@@ -14,11 +13,17 @@ public class CheckoutSolution {
      * | C    | 20    |                |
      * | D    | 15    |                |
      * +------+-------+----------------+
+     *
      * @param skus
      * @return
      */
 
     public Integer checkout(String skus) {
-        Preconditions.checkNotNull(skus);
+        if (skus == null) {
+            return -1;
+        }
+
+        throw new SolutionNotImplementedException();
     }
 }
+
