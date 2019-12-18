@@ -35,7 +35,17 @@ public class SumSolutionTest {
         sum.compute(-1, 1);
     }
 
-    
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotAcceptNegativeSecondArgument() {
+        sum.compute(1, -1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldBeLessThan100FirstArgument() {
+
+    }
+
 }
+
 
 
