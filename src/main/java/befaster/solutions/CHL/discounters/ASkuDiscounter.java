@@ -6,4 +6,3 @@ public class ASkuDiscounter implements Discounter {
         return total / 5 * 20;
     }
 }
-
