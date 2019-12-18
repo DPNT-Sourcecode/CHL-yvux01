@@ -34,6 +34,10 @@ public class CheckliteSolution {
             charCount.compute(c, (k, v) -> v == null ? 1 : ++v);
         }
 
+        for(char c : validSkus) {
+            charCount.putIfAbsent(c, 0);
+        }
+
         Integer eCount = computeCount('E', charCount, this::calculateETotal);
         Integer dCount = computeCount('D', charCount, this::calculateDTotal);
         Integer cCount = computeCount('C', charCount, this::calculateCTotal);
@@ -44,7 +48,7 @@ public class CheckliteSolution {
     }
 
     private Integer computeCount(char d, Map<Character, Integer> charCount, UnaryOperator<Integer> op) {
-        return charCount.compute(d, (k, v) -> v == null ? 0 : op.apply(v));
+        return charCount.computeIfPresent(d, (k, v) -> op.apply(v));
     }
 
     private boolean isValidSkus(char[] chars) {
@@ -78,4 +82,5 @@ public class CheckliteSolution {
         return v * 40;
     }
 }
+
 
