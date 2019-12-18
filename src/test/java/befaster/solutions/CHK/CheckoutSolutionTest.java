@@ -51,4 +51,14 @@ public class CheckoutSolutionTest {
     public void shouldCalculateBSkus() {
         assertThat(chk.checkout("BBB"), equalTo(75));
     }
+
+    @Test
+    public void shouldCalculateASkus() {
+        assertThat(chk.checkout("AAAA"), equalTo(180));
+    }
+
+    @Test
+    public void shouldCalculateAllSkusNoOffers() {
+        assertThat(chk.checkout("ABCD"), equalTo(115));
+    }
 }

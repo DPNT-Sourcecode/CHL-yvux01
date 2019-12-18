@@ -46,13 +46,10 @@ public class CheckoutSolution {
         Integer dCount = charCount.compute('D', (k, v) -> v == null ? 0 : v * 15);
         Integer cCount = charCount.compute('C', (k, v) -> v == null ? 0 : v * 20);
         Integer bCount = charCount.compute('B', (k, v) -> v == null ? 0 : calculateBTotal(v));
+        Integer aCount = charCount.compute('A', (k, v) -> v == null ? 0 : calculateATotal(v));
 
 
-        return dCount + cCount + bCount;
-    }
-
-    private Integer calculateBTotal(Integer v) {
-        return (v / 2 * 45) + (v % 2 * 30);
+        return dCount + cCount + bCount + aCount;
     }
 
     private boolean isValidSkus(char[] chars) {
@@ -63,6 +60,14 @@ public class CheckoutSolution {
         }
 
         return true;
+    }
+
+    private Integer calculateBTotal(Integer v) {
+        return (v / 2 * 45) + (v % 2 * 30);
+    }
+
+    private Integer calculateATotal(Integer v) {
+        return (v / 3 * 130) + (v % 3 * 50);
     }
 }
 
