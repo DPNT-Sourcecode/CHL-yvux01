@@ -28,19 +28,23 @@ public class CheckoutSolution {
             return -1;
         }
 
-        if (isValidSkus(skus)) {
-
+        if (!isValidSkus(skus)) {
+            return -1;
         }
-        ;
 
         throw new SolutionNotImplementedException();
     }
 
     private boolean isValidSkus(String skus) {
         for (char c : skus.toCharArray()) {
-            if (c)
+            if (!validSkus.contains(c)) {
+                return false;
+            }
         }
+
+        return true;
     }
 }
+
 
 
