@@ -35,18 +35,6 @@ public class CheckoutSolutionTest {
         assertThat(chk.checkout("CC"), equalTo(40));
     }
 
-/**
- * +------+-------+----------------+
- * | Item | Price | Special offers |
- * +------+-------+----------------+
- * | A    | 50    | 3A for 130     |
- * | B    | 30    | 2B for 45      |
- * | C    | 20    |                |
- * | D    | 15    |                |
- * +------+-------+----------------+
- *
- * */
-
     @Test
     public void shouldCalculateBSkus() {
         assertThat(chk.checkout("BBB"), equalTo(75));
@@ -59,6 +47,11 @@ public class CheckoutSolutionTest {
 
     @Test
     public void shouldCalculateAllSkusNoOffers() {
-        assertThat(chk.checkout("ABCD"), equalTo(115));
+        assertThat(chk.checkout("CDBA"), equalTo(115));
+    }
+
+    @Test
+    public void shouldCalculateAllSkusWithOffers() {
+        assertThat(chk.checkout("BABAA"), equalTo(175));
     }
 }

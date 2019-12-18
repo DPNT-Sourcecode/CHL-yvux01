@@ -37,14 +37,13 @@ public class CheckoutSolution {
             return -1;
         }
 
-        Arrays.sort(chars);
         Map<Character, Integer> charCount = new HashMap<>();
         for(char c : chars) {
             charCount.compute(c, (k, v) -> v == null ? 1 : ++v);
         }
 
-        Integer dCount = charCount.compute('D', (k, v) -> v == null ? 0 : v * 15);
-        Integer cCount = charCount.compute('C', (k, v) -> v == null ? 0 : v * 20);
+        Integer dCount = charCount.compute('D', (k, v) -> v == null ? 0 : calculateDTotal(v));
+        Integer cCount = charCount.compute('C', (k, v) -> v == null ? 0 : calculateCTotal(v));
         Integer bCount = charCount.compute('B', (k, v) -> v == null ? 0 : calculateBTotal(v));
         Integer aCount = charCount.compute('A', (k, v) -> v == null ? 0 : calculateATotal(v));
 
@@ -60,6 +59,14 @@ public class CheckoutSolution {
         }
 
         return true;
+    }
+
+    private int calculateDTotal(Integer v) {
+        return v * 15;
+    }
+
+    private int calculateCTotal(Integer v) {
+        return v * 20;
     }
 
     private Integer calculateBTotal(Integer v) {
