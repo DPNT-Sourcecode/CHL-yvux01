@@ -40,10 +40,11 @@ public class CheckoutSolution {
         Arrays.sort(chars);
         Map<Character, Integer> charCount = new HashMap<>();
         for(char c : chars) {
-            charCount.compute(c, (k, v) -> v == null ? 15 : v + 15);
+            charCount.compute(c, (k, v) -> v == null ? 1 : ++v);
         }
 
-        Integer dCount = charCount.getOrDefault('D', 0);
+        Integer dCount = charCount.computeIfPresent('D', (k, v) -> v * 15);
+        Integer cCount = charCount.computeIfPresent('C', (k, v) -> v * 20);
 
         return dCount;
     }

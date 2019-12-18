@@ -29,4 +29,9 @@ public class CheckoutSolutionTest {
     public void shouldCalculateDSkus() {
         assertThat(chk.checkout("DD"), equalTo(30));
     }
+
+    @Test
+    public void shouldCalculateCSkus() {
+        assertThat(chk.checkout("CC"), equalTo(40));
+    }
 }
