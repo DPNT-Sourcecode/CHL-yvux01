@@ -3,6 +3,9 @@ package befaster.solutions.CHK;
 import befaster.runner.SolutionNotImplementedException;
 import com.google.common.collect.ImmutableSet;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class CheckoutSolution {
@@ -28,15 +31,25 @@ public class CheckoutSolution {
             return -1;
         }
 
-        if (!isValidSkus(skus)) {
+        char[] chars = skus.toCharArray();
+
+        if (!isValidSkus(chars)) {
             return -1;
         }
+
+        Arrays.sort(chars);
+        Map<Character, Integer> charCount = new HashMap<>();
+        for(char c : chars) {
+            charCount.compute(c, (k, v) -> v == null ? 1 : v++);
+        }
+
+        
 
         throw new SolutionNotImplementedException();
     }
 
-    private boolean isValidSkus(String skus) {
-        for (char c : skus.toCharArray()) {
+    private boolean isValidSkus(char[] chars) {
+        for (char c : chars) {
             if (!validSkus.contains(c)) {
                 return false;
             }
@@ -45,3 +58,4 @@ public class CheckoutSolution {
         return true;
     }
 }
+
