@@ -54,4 +54,9 @@ public class CheckliteSolutionTest {
     public void shouldCalculateAllSkusWithOffers() {
         assertThat(chl.checklite("BABAA"), equalTo(175));
     }
+
+    @Test
+    public void shouldCalculateFiveOrMoreASkus() {
+        assertThat(chl.checklite("AAAAAAAAA"), equalTo(380));
+    }
 }
