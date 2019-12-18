@@ -11,6 +11,3 @@ public class ASkuDiscounter implements Discounter {
         return discountForFive + discountForThree;
     }
 }
-
-
-

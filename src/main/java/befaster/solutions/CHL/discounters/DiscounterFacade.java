@@ -28,5 +28,3 @@ public class DiscounterFacade {
                 .orElse(0);
     }
 }
-
-

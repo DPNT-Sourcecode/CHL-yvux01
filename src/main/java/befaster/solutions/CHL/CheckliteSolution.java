@@ -38,9 +38,10 @@ public class CheckliteSolution {
         Integer cCount = charCount.compute('C', (k, v) -> v == null ? 0 : calculateCTotal(v));
         Integer bCount = charCount.compute('B', (k, v) -> v == null ? 0 : calculateBTotal(v));
         Integer aCount = charCount.compute('A', (k, v) -> v == null ? 0 : calculateATotal(v));
+        Integer eCount = charCount.compute('E', (k, v) -> v == null ? 0 : calculateETotal(v));
 
 
-        return dCount + cCount + bCount + aCount;
+        return dCount + cCount + bCount + aCount + eCount;
     }
 
     private boolean isValidSkus(char[] chars) {
@@ -69,6 +70,8 @@ public class CheckliteSolution {
         int total = v * 50;
         return total - discounter.getDiscount('A', total, v);
     }
+
+    private Integer calculateETotal(Integer v) {
+        return v * 40;
+    }
 }
-
-
