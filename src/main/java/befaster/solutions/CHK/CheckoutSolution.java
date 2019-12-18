@@ -1,8 +1,13 @@
 package befaster.solutions.CHK;
 
 import befaster.runner.SolutionNotImplementedException;
+import com.google.common.collect.ImmutableSet;
+
+import java.util.Set;
 
 public class CheckoutSolution {
+
+    public static final Set<Character> validSkus = ImmutableSet.of('A', 'B', 'C', 'D');
 
     /**
      * +------+-------+----------------+
@@ -23,7 +28,19 @@ public class CheckoutSolution {
             return -1;
         }
 
+        if (isValidSkus(skus)) {
+
+        }
+        ;
+
         throw new SolutionNotImplementedException();
     }
+
+    private boolean isValidSkus(String skus) {
+        for (char c : skus.toCharArray()) {
+            if (c)
+        }
+    }
 }
+
 
