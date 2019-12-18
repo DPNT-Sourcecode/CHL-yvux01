@@ -1,6 +1,7 @@
 package befaster.solutions.CHL;
 
 import befaster.runner.SolutionNotImplementedException;
+import befaster.solutions.CHL.discounters.DiscounterFacade;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.HashMap;
@@ -10,6 +11,12 @@ import java.util.Set;
 public class CheckliteSolution {
 
     public static final Set<Character> validSkus = ImmutableSet.of('A', 'B', 'C', 'D');
+
+    private final DiscounterFacade discounter;
+
+    public CheckliteSolution() {
+        this.discounter = new DiscounterFacade();
+    }
 
     public Integer checklite(String skus) {
         if (skus == null) {
@@ -59,6 +66,7 @@ public class CheckliteSolution {
     }
 
     private Integer calculateATotal(Integer v) {
-        return (v / 3 * 130) + (v % 3 * 50);
+        return discounter.getDiscount('A', v * 50, v);
     }
 }
+
