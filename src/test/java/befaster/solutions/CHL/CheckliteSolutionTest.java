@@ -22,7 +22,7 @@ public class CheckliteSolutionTest {
 
     @Test
     public void shouldReturnNegativeOneOnIllegalSku() {
-        assertThat(chl.checklite("E"), equalTo(-1));
+        assertThat(chl.checklite("F"), equalTo(-1));
     }
 
     @Test

@@ -38,7 +38,7 @@ public class CheckliteSolution {
             charCount.putIfAbsent(c, 0);
         }
 
-        Integer eCount = computeCount('E', charCount, this::calculateETotal);
+        Integer eCount = computeCount('E', charCount, UnaryOperator.identity());
         Integer dCount = computeCount('D', charCount, this::calculateDTotal);
         Integer cCount = computeCount('C', charCount, this::calculateCTotal);
         Integer bCount = computeCount('B', charCount, this::calculateBTotal);
@@ -48,7 +48,12 @@ public class CheckliteSolution {
     }
 
     private Integer computeCount(char d, Map<Character, Integer> charCount, UnaryOperator<Integer> op) {
-        return charCount.computeIfPresent(d, (k, v) -> op.apply(v));
+        return charCount.computeIfPresent(d, (k, v) -> {
+            if(k == 'E') {
+                return calculateETotal(charCount);
+            }
+            return op.apply(v);
+        });
     }
 
     private boolean isValidSkus(char[] chars) {
@@ -78,9 +83,10 @@ public class CheckliteSolution {
         return total - discounter.getDiscount('A', total, v);
     }
 
-    private Integer calculateETotal(Integer v) {
-        return v * 40;
+    private Integer calculateETotal(Map<Character, Integer> charCount) {
+        return charCount.get('E') * 40;
     }
 }
+
 
 
