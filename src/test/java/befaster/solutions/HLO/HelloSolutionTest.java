@@ -18,9 +18,16 @@ public class HelloSolutionTest {
     @Test
     public void shouldReturnHelloWorldWithFirstName() {
         String friendName = "Craftsman";
-        assertThat(hlo.hello(friendName), equalTo("Hello, " + friendName));
+        assertThat(hlo.hello(friendName), equalTo("Hello, Craftsman!"));
+    }
+
+    @Test
+    public void shouldReturnFallbackHelloWorldWithNullFirstName() {
+        String friendName = null;
+        assertThat(hlo.hello(friendName), equalTo("Hello, World!"));
     }
 }
+
 
 
 
