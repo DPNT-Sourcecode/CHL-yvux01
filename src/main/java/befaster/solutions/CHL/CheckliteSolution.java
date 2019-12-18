@@ -1,12 +1,12 @@
 package befaster.solutions.CHL;
 
-import befaster.runner.SolutionNotImplementedException;
 import befaster.solutions.CHL.discounters.DiscounterFacade;
 import com.google.common.collect.ImmutableSet;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.UnaryOperator;
 
 public class CheckliteSolution {
 
@@ -34,14 +34,17 @@ public class CheckliteSolution {
             charCount.compute(c, (k, v) -> v == null ? 1 : ++v);
         }
 
-        Integer dCount = charCount.compute('D', (k, v) -> v == null ? 0 : calculateDTotal(v));
-        Integer cCount = charCount.compute('C', (k, v) -> v == null ? 0 : calculateCTotal(v));
-        Integer bCount = charCount.compute('B', (k, v) -> v == null ? 0 : calculateBTotal(v));
-        Integer aCount = charCount.compute('A', (k, v) -> v == null ? 0 : calculateATotal(v));
-        Integer eCount = charCount.compute('E', (k, v) -> v == null ? 0 : calculateETotal(v));
-
+        Integer eCount = computeCount('E', charCount, this::calculateETotal);
+        Integer dCount = computeCount('D', charCount, this::calculateDTotal);
+        Integer cCount = computeCount('C', charCount, this::calculateCTotal);
+        Integer bCount = computeCount('B', charCount, this::calculateBTotal);
+        Integer aCount = computeCount('A', charCount, this::calculateATotal);
 
         return dCount + cCount + bCount + aCount + eCount;
+    }
+
+    private Integer computeCount(char d, Map<Character, Integer> charCount, UnaryOperator<Integer> op) {
+        return charCount.compute(d, (k, v) -> v == null ? 0 : op.apply(v));
     }
 
     private boolean isValidSkus(char[] chars) {
@@ -75,3 +78,4 @@ public class CheckliteSolution {
         return v * 40;
     }
 }
+
