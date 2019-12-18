@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class CheckliteSolution {
 
-    public static final Set<Character> validSkus = ImmutableSet.of('A', 'B', 'C', 'D');
+    public static final Set<Character> validSkus = ImmutableSet.of('A', 'B', 'C', 'D', 'E');
 
     private final DiscounterFacade discounter;
 

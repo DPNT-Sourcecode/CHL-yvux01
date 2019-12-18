@@ -59,4 +59,9 @@ public class CheckliteSolutionTest {
     public void shouldCalculateFiveOrMoreASkus() {
         assertThat(chl.checklite("AAAAAAAAA"), equalTo(380));
     }
+
+    @Test
+    public void shouldCalculateFreeBSkuWith2ESkus() {
+        assertThat(chl.checklite("EEEEBB"), equalTo(160));
+    }
 }
