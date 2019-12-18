@@ -24,4 +24,9 @@ public class CheckoutSolutionTest {
     public void shouldReturnNegativeOneOnIllegalSku() {
         assertThat(chk.checkout("E"), equalTo(-1));
     }
+
+    @Test
+    public void shouldCalculateDSkus() {
+        assertThat(chk.checkout("DD"), equalTo(30));
+    }
 }
