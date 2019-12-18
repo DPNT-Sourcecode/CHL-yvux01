@@ -19,4 +19,9 @@ public class CheckoutSolutionTest {
     public void shouldReturnNegativeOneOnNull() {
         assertThat(chk.checkout(null), equalTo(-1));
     }
+
+    @Test
+    public void shouldReturnNegativeOneOnIllegalSku() {
+        assertThat(chk.checkout("E"), equalTo(-1));
+    }
 }
