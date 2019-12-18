@@ -40,12 +40,12 @@ public class CheckoutSolution {
         Arrays.sort(chars);
         Map<Character, Integer> charCount = new HashMap<>();
         for(char c : chars) {
-            charCount.compute(c, (k, v) -> v == null ? 1 : v++);
+            charCount.compute(c, (k, v) -> v == null ? 15 : v + 15);
         }
 
-        
+        Integer dCount = charCount.getOrDefault('D', 0);
 
-        throw new SolutionNotImplementedException();
+        return dCount;
     }
 
     private boolean isValidSkus(char[] chars) {
@@ -58,4 +58,5 @@ public class CheckoutSolution {
         return true;
     }
 }
+
 
