@@ -29,5 +29,13 @@ public class SumSolutionTest {
     public void shouldComputeMaximumSum() {
         assertThat(sum.compute(100, 100), equalTo(200));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotAcceptNegativeFirstArgument() {
+        sum.compute(-1, 1);
+    }
+
+    
 }
+
 
