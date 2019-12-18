@@ -43,10 +43,11 @@ public class CheckoutSolution {
             charCount.compute(c, (k, v) -> v == null ? 1 : ++v);
         }
 
-        Integer dCount = charCount.computeIfPresent('D', (k, v) -> v * 15);
-        Integer cCount = charCount.computeIfPresent('C', (k, v) -> v * 20);
+        Integer dCount = charCount.compute('D', (k, v) -> v == null ? 0 : v * 15);
+        Integer cCount = charCount.compute('C', (k, v) -> v == null ? 0 : v * 20);
 
-        return dCount;
+
+        return dCount + cCount;
     }
 
     private boolean isValidSkus(char[] chars) {

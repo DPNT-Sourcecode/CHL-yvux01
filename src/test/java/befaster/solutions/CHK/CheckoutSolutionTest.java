@@ -34,4 +34,21 @@ public class CheckoutSolutionTest {
     public void shouldCalculateCSkus() {
         assertThat(chk.checkout("CC"), equalTo(40));
     }
+
+/**
+ * +------+-------+----------------+
+ * | Item | Price | Special offers |
+ * +------+-------+----------------+
+ * | A    | 50    | 3A for 130     |
+ * | B    | 30    | 2B for 45      |
+ * | C    | 20    |                |
+ * | D    | 15    |                |
+ * +------+-------+----------------+
+ *
+ * */
+
+    @Test
+    public void shouldCalculateBSkus() {
+        assertThat(chk.checkout("BBB"), equalTo(75));
+    }
 }
