@@ -5,25 +5,28 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class DiscounterFacade implements Discounter {
+public class DiscounterFacade {
 
     Map<Character, Set<Discounter>> discounters = new HashMap<>();
 
     public DiscounterFacade() {
-        addDiscounter('A', new ASkuDiscounter())
+        addDiscounter('A', new ASkuDiscounter());
     }
 
-    private void addDiscounter(char a, Discounter discounter) {
-        discounters.putIfAbsent(a, new HashSet<>());
-        discounters.computeIfPresent(a, (k, v) -> {
+    private void addDiscounter(char c, Discounter discounter) {
+        discounters.putIfAbsent(c, new HashSet<>());
+        discounters.computeIfPresent(c, (k, v) -> {
             v.add(discounter);
             return v;
         });
     }
 
-    @Override
-    public int getDiscount(int value, int noOfitems) {
-
+    public int getDiscount(char c, int value, int noOfitems) {
+        return discounters.get(c).stream()
+                .map(d -> d.getDiscount(value, noOfitems))
+                .reduce((d1, d2) -> d1 + d2)
+                .orElse(0);
     }
 }
+
 
