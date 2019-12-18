@@ -16,9 +16,11 @@ public class HelloSolutionTest {
     }
 
     @Test
-    public void shouldReturnHelloWorld() {
-        assertThat(hlo.hello("Craftsman"), equalTo("Hello, World!"));
+    public void shouldReturnHelloWorldWithFirstName() {
+        String friendName = "Craftsman";
+        assertThat(hlo.hello(friendName), equalTo("Hello, " + friendName));
     }
 }
+
 
 
