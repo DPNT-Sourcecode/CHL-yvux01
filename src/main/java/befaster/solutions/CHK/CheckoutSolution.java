@@ -77,6 +77,3 @@ public class CheckoutSolution {
         return (v / 3 * 130) + (v % 3 * 50);
     }
 }
-
-
-
