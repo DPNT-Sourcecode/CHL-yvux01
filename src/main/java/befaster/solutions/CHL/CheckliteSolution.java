@@ -66,7 +66,9 @@ public class CheckliteSolution {
     }
 
     private Integer calculateATotal(Integer v) {
-        return discounter.getDiscount('A', v * 50, v);
+        int total = v * 50;
+        return total - discounter.getDiscount('A', total, v);
     }
 }
+
 
